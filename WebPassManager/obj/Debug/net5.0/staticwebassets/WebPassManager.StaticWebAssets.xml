@@ -1,0 +1,4 @@
+﻿<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="_content/MudBlazor" Path="/home/ovidiu/.nuget/packages/mudblazor/5.0.3/build/../staticwebassets/" />
+  <ContentRoot BasePath="/" Path="/home/ovidiu/Documents/Projects/WebPassManager/obj/Debug/net5.0/scopedcss/bundle/" />
+</StaticWebAssets>

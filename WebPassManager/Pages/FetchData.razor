@@ -1,0 +1,40 @@
+﻿@page "/fetchdata"
+
+@inject WeatherForecastService ForecastService
+
+<h1>Weather forecast</h1>
+
+
+@if (forecasts == null)
+{
+    <MudProgressCircular Color="Color.Primary" Indeterminate="true"/>
+}
+else
+{
+    <MudTable Items="@forecasts.Take(5)" Hover="true" Breakpoint="Breakpoint.Sm" RightAlignSmall="true">
+        <HeaderContent>
+            <MudTh>Date</MudTh>
+            <MudTh>Temp (C)</MudTh>
+            <MudTh>Temp (F)</MudTh>
+            <MudTh>Summary</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Date">@context.Date.ToShortDateString()</MudTd>
+            <MudTd DataLabel="Temp (C)">@context.TemperatureC</MudTd>
+            <MudTd DataLabel="Temp (F)">@context.TemperatureF</MudTd>
+            <MudTd DataLabel="Summary" HideSmall="true">@context.Summary</MudTd>
+        </RowTemplate>
+    </MudTable>
+}
+
+
+
+@code {
+    private WeatherForecast[] forecasts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+    
+    }
+}
