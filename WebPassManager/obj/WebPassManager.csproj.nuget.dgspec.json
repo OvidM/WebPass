@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/ovidiu/Documents/Projects/WebPassManager/WebPassManager.csproj": {}
+    "/home/ovidiu/Documents/Projects/WebPass/WebPassManager/WebPassManager.csproj": {}
   },
   "projects": {
-    "/home/ovidiu/Documents/Projects/WebPassManager/WebPassManager.csproj": {
+    "/home/ovidiu/Documents/Projects/WebPass/WebPassManager/WebPassManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ovidiu/Documents/Projects/WebPassManager/WebPassManager.csproj",
+        "projectUniqueName": "/home/ovidiu/Documents/Projects/WebPass/WebPassManager/WebPassManager.csproj",
         "projectName": "WebPassManager",
-        "projectPath": "/home/ovidiu/Documents/Projects/WebPassManager/WebPassManager.csproj",
+        "projectPath": "/home/ovidiu/Documents/Projects/WebPass/WebPassManager/WebPassManager.csproj",
         "packagesPath": "/home/ovidiu/.nuget/packages/",
-        "outputPath": "/home/ovidiu/Documents/Projects/WebPassManager/obj/",
+        "outputPath": "/home/ovidiu/Documents/Projects/WebPass/WebPassManager/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/ovidiu/.nuget/NuGet/NuGet.Config"

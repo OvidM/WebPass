@@ -1,5 +1,5 @@
 {
-  "FilePath": "/home/ovidiu/Documents/Projects/WebPassManager/WebPassManager.csproj",
+  "FilePath": "/home/ovidiu/Documents/Projects/WebPass/WebPassManager/WebPassManager.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "5.0",
@@ -11,39 +11,6 @@
   },
   "ProjectWorkspaceState": {
     "TagHelpers": [
-      {
-        "HashCode": -316464132,
-        "Kind": "Components.Component",
-        "Name": "WebPassManager.Pages.Index",
-        "AssemblyName": "WebPassManager",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "WebPassManager.Pages.Index"
-        }
-      },
-      {
-        "HashCode": -1546296300,
-        "Kind": "Components.Component",
-        "Name": "WebPassManager.Pages.Index",
-        "AssemblyName": "WebPassManager",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "WebPassManager.Pages.Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "WebPassManager.Pages.Index",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
       {
         "HashCode": -1510647546,
         "Kind": "Components.Component",
@@ -74,6 +41,39 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "WebPassManager.Pages.FetchData",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -316464132,
+        "Kind": "Components.Component",
+        "Name": "WebPassManager.Pages.Index",
+        "AssemblyName": "WebPassManager",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "WebPassManager.Pages.Index"
+        }
+      },
+      {
+        "HashCode": -1546296300,
+        "Kind": "Components.Component",
+        "Name": "WebPassManager.Pages.Index",
+        "AssemblyName": "WebPassManager",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "WebPassManager.Pages.Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "WebPassManager.Pages.Index",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -59683,49 +59683,54 @@
   "RootNamespace": "WebPassManager",
   "Documents": [
     {
-      "FilePath": "/home/ovidiu/Documents/Projects/WebPassManager/Pages/Error.cshtml",
-      "TargetPath": "Pages\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/ovidiu/Documents/Projects/WebPassManager/Pages/Passwords.razor",
-      "TargetPath": "Pages\\Passwords.razor",
-      "FileKind": "component"
-    },
-    {
-      "FilePath": "/home/ovidiu/Documents/Projects/WebPassManager/Pages/Index.razor",
-      "TargetPath": "Pages\\Index.razor",
-      "FileKind": "component"
-    },
-    {
-      "FilePath": "/home/ovidiu/Documents/Projects/WebPassManager/App.razor",
-      "TargetPath": "App.razor",
-      "FileKind": "component"
-    },
-    {
-      "FilePath": "/home/ovidiu/Documents/Projects/WebPassManager/Shared/MainLayout.razor",
-      "TargetPath": "Shared\\MainLayout.razor",
-      "FileKind": "component"
-    },
-    {
-      "FilePath": "/home/ovidiu/Documents/Projects/WebPassManager/Pages/_Host.cshtml",
-      "TargetPath": "Pages\\_Host.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/ovidiu/Documents/Projects/WebPassManager/Pages/FetchData.razor",
+      "FilePath": "/home/ovidiu/Documents/Projects/WebPass/WebPassManager/Pages/FetchData.razor",
       "TargetPath": "Pages\\FetchData.razor",
       "FileKind": "component"
     },
     {
-      "FilePath": "/home/ovidiu/Documents/Projects/WebPassManager/_Imports.razor",
-      "TargetPath": "_Imports.razor",
-      "FileKind": "componentImport"
-    },
-    {
-      "FilePath": "/home/ovidiu/Documents/Projects/WebPassManager/Shared/NavMenu.razor",
+      "FilePath": "/home/ovidiu/Documents/Projects/WebPass/WebPassManager/Shared/NavMenu.razor",
       "TargetPath": "Shared\\NavMenu.razor",
       "FileKind": "component"
+    },
+    {
+      "FilePath": "/home/ovidiu/Documents/Projects/WebPass/WebPassManager/Pages/Error.cshtml",
+      "TargetPath": "Pages\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/ovidiu/Documents/Projects/WebPass/WebPassManager/Pages/_Host.cshtml",
+      "TargetPath": "Pages\\_Host.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/ovidiu/Documents/Projects/WebPass/WebPassManager/Components/TableComponent.razor",
+      "TargetPath": "Components\\TableComponent.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/home/ovidiu/Documents/Projects/WebPass/WebPassManager/Pages/Passwords.razor",
+      "TargetPath": "Pages\\Passwords.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/home/ovidiu/Documents/Projects/WebPass/WebPassManager/App.razor",
+      "TargetPath": "App.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/home/ovidiu/Documents/Projects/WebPass/WebPassManager/Pages/Index.razor",
+      "TargetPath": "Pages\\Index.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/home/ovidiu/Documents/Projects/WebPass/WebPassManager/Shared/MainLayout.razor",
+      "TargetPath": "Shared\\MainLayout.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/home/ovidiu/Documents/Projects/WebPass/WebPassManager/_Imports.razor",
+      "TargetPath": "_Imports.razor",
+      "FileKind": "componentImport"
     }
   ],
   "SerializationFormat": "0.2"

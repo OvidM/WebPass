@@ -1,0 +1,12 @@
+/home/ovidiu/Documents/Projects/EDataAccessLibrary/bin/Debug/net5.0/publish/EDataAccessLibrary.dll
+/home/ovidiu/Documents/Projects/EDataAccessLibrary/bin/Debug/net5.0/publish/EDataAccessLibrary.deps.json
+/home/ovidiu/Documents/Projects/EDataAccessLibrary/bin/Debug/net5.0/publish/EDataAccessLibrary.pdb
+/home/ovidiu/Documents/Projects/EDataAccessLibrary/bin/Debug/net5.0/publish/Dapper.dll
+/home/ovidiu/Documents/Projects/EDataAccessLibrary/bin/Debug/net5.0/publish/Microsoft.Extensions.Configuration.Abstractions.dll
+/home/ovidiu/Documents/Projects/EDataAccessLibrary/bin/Debug/net5.0/publish/Microsoft.Extensions.Primitives.dll
+/home/ovidiu/Documents/Projects/EDataAccessLibrary/bin/Debug/net5.0/publish/System.Data.SqlClient.dll
+/home/ovidiu/Documents/Projects/EDataAccessLibrary/bin/Debug/net5.0/publish/runtimes/win-arm64/native/sni.dll
+/home/ovidiu/Documents/Projects/EDataAccessLibrary/bin/Debug/net5.0/publish/runtimes/win-x64/native/sni.dll
+/home/ovidiu/Documents/Projects/EDataAccessLibrary/bin/Debug/net5.0/publish/runtimes/win-x86/native/sni.dll
+/home/ovidiu/Documents/Projects/EDataAccessLibrary/bin/Debug/net5.0/publish/runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll
+/home/ovidiu/Documents/Projects/EDataAccessLibrary/bin/Debug/net5.0/publish/runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll

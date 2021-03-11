@@ -8,7 +8,7 @@
     <PackageReference Include="Dapper" Version="2.0.4" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
     <Reference Include="EDataAccessLibrary">
-      <HintPath>/home/ovidiu/Documents/Projects/EDataAccessLibrary/bin/Debug/net5.0/EDataAccessLibrary.dll</HintPath>
+      <HintPath>../EDataAccessLibrary/bin/Debug/net5.0/EDataAccessLibrary.dll</HintPath>
     </Reference> 
     <PackageReference Include="MudBlazor" Version="5.0.3" />
   </ItemGroup>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kYFuqCsjgk3nACiyREw0/2x7OxJl2LRwLqGbbg9mvmyImwXW+le/1dF3Kht33rSR225BLKY+qLqjLcX0Ze7g7Q==",
+  "dgSpecHash": "CoqG11EnWR5LnkXFFHro9djeGHhgXMO3k61HPrl6PSG51dEZn4kZJo0sMoG0cktIUQKKQdaYPkgZw9YznZaF3w==",
   "success": true,
-  "projectFilePath": "/home/ovidiu/Documents/Projects/WebPassManager/WebPassManager.csproj",
+  "projectFilePath": "/home/ovidiu/Documents/Projects/WebPass/WebPassManager/WebPassManager.csproj",
   "expectedPackageFiles": [
     "/home/ovidiu/.nuget/packages/dapper/2.0.4/dapper.2.0.4.nupkg.sha512",
     "/home/ovidiu/.nuget/packages/microsoft.aspnetcore.authorization/5.0.3/microsoft.aspnetcore.authorization.5.0.3.nupkg.sha512",
