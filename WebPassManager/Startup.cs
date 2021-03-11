@@ -30,7 +30,6 @@ namespace WebPassManager
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
             services.AddMudServices();
             services.AddTransient<ISqlDataAccess, SqlDataAccess>();
             services.AddTransient<IUsersData, UsersData>();

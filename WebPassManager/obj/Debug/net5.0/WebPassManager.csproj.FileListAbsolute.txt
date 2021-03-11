@@ -146,3 +146,5 @@
 /home/ovidiu/Documents/Projects/WebPass/WebPassManager/obj/Debug/net5.0/ref/WebPassManager.dll
 /home/ovidiu/Documents/Projects/WebPass/WebPassManager/obj/Debug/net5.0/WebPassManager.pdb
 /home/ovidiu/Documents/Projects/WebPass/WebPassManager/obj/Debug/net5.0/WebPassManager.genruntimeconfig.cache
+/home/ovidiu/Documents/Projects/WebPass/WebPassManager/obj/Debug/net5.0/RazorDeclaration/Components/TableComponent.razor.g.cs
+/home/ovidiu/Documents/Projects/WebPass/WebPassManager/obj/Debug/net5.0/Razor/Components/TableComponent.razor.g.cs

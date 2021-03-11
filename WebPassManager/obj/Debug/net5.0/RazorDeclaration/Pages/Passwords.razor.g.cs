@@ -8,7 +8,7 @@ namespace WebPassManager.Pages
 {
     #line hidden
     using System;
-    using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
@@ -68,13 +68,6 @@ using Microsoft.JSInterop;
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "/home/ovidiu/Documents/Projects/WebPass/WebPassManager/_Imports.razor"
-using WebPassManager;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
 #line 10 "/home/ovidiu/Documents/Projects/WebPass/WebPassManager/_Imports.razor"
 using WebPassManager.Shared;
 
@@ -84,6 +77,13 @@ using WebPassManager.Shared;
 #nullable restore
 #line 12 "/home/ovidiu/Documents/Projects/WebPass/WebPassManager/_Imports.razor"
 using Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 14 "/home/ovidiu/Documents/Projects/WebPass/WebPassManager/_Imports.razor"
+using System.Collections.Generic;
 
 #line default
 #line hidden
@@ -132,7 +132,14 @@ using System.IO;
 #nullable disable
 #nullable restore
 #line 8 "/home/ovidiu/Documents/Projects/WebPass/WebPassManager/Pages/Passwords.razor"
-using System.Linq;
+using WebPassManager.Components;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 9 "/home/ovidiu/Documents/Projects/WebPass/WebPassManager/Pages/Passwords.razor"
+using WebPassManager;
 
 #line default
 #line hidden
@@ -146,170 +153,13 @@ using System.Linq;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 79 "/home/ovidiu/Documents/Projects/WebPass/WebPassManager/Pages/Passwords.razor"
+#line 24 "/home/ovidiu/Documents/Projects/WebPass/WebPassManager/Pages/Passwords.razor"
        
-    private List<UserModel> users;
-    private List<PasswordModel> passwords;
-    private DisplayPasswordModel newPassword = new DisplayPasswordModel();
-    bool show = true;
-    bool confirmDelete = false;
-    int idToDelete;
-
-    private string passw= "********";
+    private List<PasswordModel> _passwords;
     protected override async Task OnInitializedAsync()
-        {
-            users = await _db1.GetUsers();
-            passwords = await _db2.GetPasswords();
-            
-            
-        }
-    private async void changeVisibility()
     {
-        show = !show;
-        if(show == false){
-            foreach(var item in passwords)
-            {
-                item.PassWord  = Convert.ToBase64String(EncryptStringToBytes_Aes(item.PassWord,
-                                                           Convert.FromBase64String(item.PassKey),
-                                                            Convert.FromBase64String(item.PassIV)));
-            }
-        }
-        else{
-            foreach(var item in passwords)
-            {
-                item.PassWord  = DecryptStringFromBytes_Aes(Convert.FromBase64String(item.PassWord),
-                                                           Convert.FromBase64String(item.PassKey),
-                                                            Convert.FromBase64String(item.PassIV));
-            }
-        }
-        await InvokeAsync(() =>
-        {
-            base.StateHasChanged();
-        });
+        _passwords = await  _db2.GetPasswords();
     }
-    private async Task TransferPassword()
-    {
-        using(Aes myAes = Aes.Create())
-        {
-            byte[] newEncrypted = EncryptStringToBytes_Aes(newPassword.PassWord, myAes.Key, myAes.IV);
-            string newEncrypted1 = Convert.ToBase64String(newEncrypted);
-            var key = Convert.ToBase64String(myAes.Key);
-            var IV = Convert.ToBase64String(myAes.IV);
-            PasswordModel p = new PasswordModel
-        {
-            Service = newPassword.Service,
-            UserName = newPassword.UserName,
-            PassWord = newEncrypted1,
-            UserId = 1,
-            PassKey = key,
-            PassIV = IV
-        };
-        var id = await _db2.InsertPassword(p);
-        p.Id = (Int32)id;
-        passwords.Add(p);
-
-        newPassword = new DisplayPasswordModel();
-        }
-        
-    }
-    private void ConfirmPass(int ID)
-    {
-        idToDelete = ID;
-        confirmDelete = true;
-    }
-    private async void DeletePass(int ID)
-    {
-        await _db2.DeletePassword(ID);
-        passwords = passwords.Where(x=>x.Id!=ID).ToList();
-        await InvokeAsync(() =>
-        {
-            base.StateHasChanged();
-        });
-    }
-    
-    static byte[] EncryptStringToBytes_Aes(string plainText, byte[] Key, byte[] IV)
-        {
-            // Check arguments.
-            if (plainText == null || plainText.Length <= 0)
-                throw new ArgumentNullException("plainText");
-            if (Key == null || Key.Length <= 0)
-                throw new ArgumentNullException("Key");
-            if (IV == null || IV.Length <= 0)
-                throw new ArgumentNullException("IV");
-            byte[] encrypted;
-
-            // Create an Aes object
-            // with the specified key and IV.
-            using (Aes aesAlg = Aes.Create())
-            {
-                aesAlg.Key = Key;
-                aesAlg.IV = IV;
-
-                // Create an encryptor to perform the stream transform.
-                ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
-
-                // Create the streams used for encryption.
-                using (MemoryStream msEncrypt = new MemoryStream())
-                {
-                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
-                    {
-                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
-                        {
-                            //Write all data to the stream.
-                            swEncrypt.Write(plainText);
-                        }
-                        encrypted = msEncrypt.ToArray();
-                    }
-                }
-            }
-
-            // Return the encrypted bytes from the memory stream.
-            return encrypted;
-        }
-    static string DecryptStringFromBytes_Aes(byte[] cipherText, byte[] Key, byte[] IV)
-        {
-            // Check arguments.
-            if (cipherText == null || cipherText.Length <= 0)
-                throw new ArgumentNullException("cipherText");
-            if (Key == null || Key.Length <= 0)
-                throw new ArgumentNullException("Key");
-            if (IV == null || IV.Length <= 0)
-                throw new ArgumentNullException("IV");
-
-            // Declare the string used to hold
-            // the decrypted text.
-            string plaintext = null;
-
-            // Create an Aes object
-            // with the specified key and IV.
-            using (Aes aesAlg = Aes.Create())
-            {   
-                Console.WriteLine("key:" + Key.Length);
-                Console.WriteLine("IV:" + IV.Length);
-                aesAlg.Key = Key;
-                aesAlg.IV = IV;
-
-                // Create a decryptor to perform the stream transform.
-                ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
-
-                // Create the streams used for decryption.
-                using (MemoryStream msDecrypt = new MemoryStream(cipherText))
-                {
-                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
-                    {
-                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
-                        {
-
-                            // Read the decrypted bytes from the decrypting stream
-                            // and place them in a string.
-                            plaintext = srDecrypt.ReadToEnd();
-                        }
-                    }
-                }
-            }
-
-            return plaintext;
-        }
 
 #line default
 #line hidden

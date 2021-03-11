@@ -45,39 +45,6 @@
         }
       },
       {
-        "HashCode": -316464132,
-        "Kind": "Components.Component",
-        "Name": "WebPassManager.Pages.Index",
-        "AssemblyName": "WebPassManager",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "WebPassManager.Pages.Index"
-        }
-      },
-      {
-        "HashCode": -1546296300,
-        "Kind": "Components.Component",
-        "Name": "WebPassManager.Pages.Index",
-        "AssemblyName": "WebPassManager",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "WebPassManager.Pages.Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "WebPassManager.Pages.Index",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": 1744608142,
         "Kind": "Components.Component",
         "Name": "WebPassManager.Pages.Passwords",
@@ -107,6 +74,39 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "WebPassManager.Pages.Passwords",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -316464132,
+        "Kind": "Components.Component",
+        "Name": "WebPassManager.Pages.Index",
+        "AssemblyName": "WebPassManager",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "WebPassManager.Pages.Index"
+        }
+      },
+      {
+        "HashCode": -1546296300,
+        "Kind": "Components.Component",
+        "Name": "WebPassManager.Pages.Index",
+        "AssemblyName": "WebPassManager",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "WebPassManager.Pages.Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "WebPassManager.Pages.Index",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -269,6 +269,39 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "WebPassManager.Shared.NavMenu",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 439158736,
+        "Kind": "Components.Component",
+        "Name": "WebPassManager.Components.TableComponent",
+        "AssemblyName": "WebPassManager",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TableComponent"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "WebPassManager.Components.TableComponent"
+        }
+      },
+      {
+        "HashCode": -610114415,
+        "Kind": "Components.Component",
+        "Name": "WebPassManager.Components.TableComponent",
+        "AssemblyName": "WebPassManager",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "WebPassManager.Components.TableComponent"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "WebPassManager.Components.TableComponent",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
