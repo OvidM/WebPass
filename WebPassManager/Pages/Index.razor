@@ -1,10 +1,31 @@
 @page "/"
-@using System.Text.Json
 
-<MudText Typo="Typo.h2" Style="color: white" Align="Align.Center"><strong>Welcome to PassMang</strong></MudText>
+
+@inject NavigationManager navigationManager
+@inject IUsersData _db1
+
+<MudText Typo="Typo.h3" Style="color: white; left: 50%;" ><strong>Welcome to PassMang</strong></MudText>
+
+@if(_users == null)
+{
+    <h3>Loading...</h3>
+}
+else
+{
+    <CascadingValue Value = "_users" Name = "users">
+        <LoginComponent />
+    </CascadingValue>
+}
+
+
+
 
 @code {
+    private List<UserModel> _users {get; set;}
+    protected override async Task OnInitializedAsync()
+    {
+        _users = await _db1.GetUsers();
+    }
     
-   
 
 }

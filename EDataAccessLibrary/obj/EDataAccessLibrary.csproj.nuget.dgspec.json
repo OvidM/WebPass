@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/ovidiu/Documents/Projects/WebPass/EDataAccessLibrary/EDataAccessLibrary.csproj": {}
+    "/home/ovidiu/Desktop/WebPass/EDataAccessLibrary/EDataAccessLibrary.csproj": {}
   },
   "projects": {
-    "/home/ovidiu/Documents/Projects/WebPass/EDataAccessLibrary/EDataAccessLibrary.csproj": {
+    "/home/ovidiu/Desktop/WebPass/EDataAccessLibrary/EDataAccessLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ovidiu/Documents/Projects/WebPass/EDataAccessLibrary/EDataAccessLibrary.csproj",
+        "projectUniqueName": "/home/ovidiu/Desktop/WebPass/EDataAccessLibrary/EDataAccessLibrary.csproj",
         "projectName": "EDataAccessLibrary",
-        "projectPath": "/home/ovidiu/Documents/Projects/WebPass/EDataAccessLibrary/EDataAccessLibrary.csproj",
+        "projectPath": "/home/ovidiu/Desktop/WebPass/EDataAccessLibrary/EDataAccessLibrary.csproj",
         "packagesPath": "/home/ovidiu/.nuget/packages/",
-        "outputPath": "/home/ovidiu/Documents/Projects/WebPass/EDataAccessLibrary/obj/",
+        "outputPath": "/home/ovidiu/Desktop/WebPass/EDataAccessLibrary/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/ovidiu/.nuget/NuGet/NuGet.Config"

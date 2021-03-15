@@ -1,18 +1,30 @@
 ﻿@using EDataAccessLibrary.Models
 @using Models
+@using System
 @using System.Security.Cryptography
 @using System.IO
 @using EDataAccessLibrary
+@using System.Threading
 @using WebPassManager
 @inject IUsersData _db1
 @inject IPasswordData _db2
+
 
 @if (passwords == null)
 {
     <MudText Typo='Typo.h5'>Loading...</MudText>
 }
+else if(isLoggedOut)
+{
+    <CascadingValue Value = "users" Name = "users">
+        <LoginComponent />
+    </CascadingValue>
+}
 else
 {
+    <MudText Typo = "Typo.h5" Style = "color: white;">Current User: @userName</MudText>
+    <MudButton Variant="Variant.Filled" Color="Color.Secondary" Style = "margin-bottom: 15px" @onclick="logOut">Logout</MudButton>
+    <MudText Typo = "Typo.h4" Style="text-align: center"><strong>PASSWORDS</strong></MudText>
     <MudTable Items='@passwords'>
         <HeaderContent>
             <MudTh>Service</MudTh>
@@ -42,41 +54,54 @@ else
     </MudTable>
     <form>
         <input type="checkbox" @onclick="changeVisibility" style='margin-top: 10px; margin-right: 5px'>Show Password
+        <MudIconButton Icon="@Icons.Material.Filled.Refresh" Color = "Color.Secondary" @onclick = "refreshPage"></MudIconButton>
     </form>
+
+    <h3>Insert New Password</h3>
+
+    <div style="max-width: 400px;">
+
+        <EditForm Model="@newPassword" OnValidSubmit="@TransferPassword">
+            <DataAnnotationsValidator />
+            <MudCard>
+                <MudCardContent>
+                    <MudTextField Label="Service"
+                                @bind-Value="newPassword.Service" For="@(() => newPassword.Service)" />
+                    <MudTextField Label="Username" Class="mt-3"
+                                @bind-Value="newPassword.UserName" For="@(() => newPassword.UserName)" />
+                    <MudTextField Label="Password" HelperText="Choose a strong password" Class="mt-3"
+                                @bind-Value="newPassword.PassWord" For="@(() => newPassword.PassWord)" Immediate = "@isGenerated" InputType="@PasswordInput" Adornment="Adornment.End" AdornmentIcon="@PasswordInputIcon" OnAdornmentClick="ButtonTestclick"/>
+                    <MudButton Variant = "Variant.Filled"  Color= "Color.Secondary" Style = "margin-top: 7px" @onclick = "generatePass">Generate Strong Password!</MudButton>
+                    <MudTextField Label="Repeat Password" HelperText="Repeat the password" Class="mt-3"
+                                @bind-Value="newPassword.RepeatPassWord" For="@(() => newPassword.RepeatPassWord)" Immediate = "@isGenerated" InputType="@PasswordInput"/>
+                </MudCardContent>
+
+                <MudCardActions>
+                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto" Align="Align.Center">Submit</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </EditForm>
+    </div>
     
 }
 
-<h3>Insert New Password</h3>
-
-<div style="max-width: 400px;">
-    <EditForm Model="@newPassword" OnValidSubmit="@TransferPassword">
-        <DataAnnotationsValidator />
-        <MudCard>
-            <MudCardContent>
-                <MudTextField Label="Service"
-                              @bind-Value="newPassword.Service" For="@(() => newPassword.Service)" />
-                <MudTextField Label="Username" Class="mt-3"
-                              @bind-Value="newPassword.UserName" For="@(() => newPassword.UserName)" />
-                <MudTextField Label="Password" HelperText="Choose a strong password" Class="mt-3"
-                              @bind-Value="newPassword.PassWord" For="@(() => newPassword.PassWord)" InputType="InputType.Password" />
-                <MudTextField Label="Password" HelperText="Repeat the password" Class="mt-3"
-                              @bind-Value="newPassword.RepeatPassWord" For="@(() => newPassword.RepeatPassWord)" InputType="InputType.Password" />
-            </MudCardContent>
-            <MudCardActions>
-                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto" Align="Align.Center">Submit</MudButton>
-            </MudCardActions>
-        </MudCard>
-    </EditForm>
-</div>
 
 @code {
+    [CascadingParameter(Name="userName")]
+    string userName {get; set;}
+    [CascadingParameter(Name="userID")] 
+    int userID {get; set;}
     [CascadingParameter(Name="passwords")]
     public List<PasswordModel> passwords {get; set;}
+    public List<UserModel> users;
     public DisplayPasswordModel newPassword = new DisplayPasswordModel();
-    public bool show = true;
-    public bool confirmDelete = false;
+    public bool show = false;
+    public bool isGenerated ,isLoggedOut, confirmDelete = false;
     public int idToDelete;
     public string passw= "********";
+    bool isShow;
+    InputType PasswordInput = InputType.Password;
+    string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
     private async void changeVisibility()
     {
         show = !show;
@@ -101,6 +126,35 @@ else
             base.StateHasChanged();
         });
     }
+    async void logOut()
+    {
+        users = await _db1.GetUsers();
+        isLoggedOut = true;
+        await InvokeAsync(() =>
+        {
+            base.StateHasChanged();
+        });
+    }
+    async void refreshPage()
+    {
+        passwords = null;
+        await Task.Delay(500);
+        passwords = await _db2.GetPasswords(userID);
+        await InvokeAsync(() =>
+        {
+            base.StateHasChanged();
+        });
+    }
+    void generatePass()
+    {
+        
+        var ppass = Password.Generate(15, 1);
+        newPassword.PassWord = ppass;
+        newPassword.RepeatPassWord = ppass;
+        isGenerated = true;
+        if(isShow == false)
+        ButtonTestclick();
+    }
     private async Task TransferPassword()
     {
         using(Aes myAes = Aes.Create())
@@ -110,19 +164,24 @@ else
             var key = Convert.ToBase64String(myAes.Key);
             var IV = Convert.ToBase64String(myAes.IV);
             PasswordModel p = new PasswordModel
-        {
-            Service = newPassword.Service,
-            UserName = newPassword.UserName,
-            PassWord = newEncrypted1,
-            UserId = 1,
-            PassKey = key,
-            PassIV = IV
-        };
-        var id = await _db2.InsertPassword(p);
-        p.Id = (Int32)id;
-        passwords.Add(p);
-
-        newPassword = new DisplayPasswordModel();
+            {
+                Service = newPassword.Service,
+                UserName = newPassword.UserName,
+                PassWord = newEncrypted1,
+                UserId = userID,
+                PassKey = key,
+                PassIV = IV
+            };
+            changeVisibility();
+            var id = await _db2.InsertPassword(p);
+            p.Id = (Int32)id;
+            passwords.Add(p);
+            changeVisibility();
+            newPassword = new DisplayPasswordModel();
+            await InvokeAsync(() =>
+            {
+                base.StateHasChanged();
+            });
         }
         
     }
@@ -133,14 +192,29 @@ else
     }
     private async void DeletePass(int ID)
     {
+        System.Console.WriteLine("Passwords are: " + passwords.Count());
         await _db2.DeletePassword(ID);
+        System.Console.WriteLine("Passwords are: " + passwords.Count());
         passwords = passwords.Where(x=>x.Id!=ID).ToList();
         await InvokeAsync(() =>
         {
             base.StateHasChanged();
         });
     }
-    
+    void ButtonTestclick()
+    {
+        if (isShow)
+        {
+            isShow = false;
+            PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+            PasswordInput = InputType.Password;
+        }
+        else {
+            isShow = true;
+            PasswordInputIcon = Icons.Material.Filled.Visibility;
+            PasswordInput = InputType.Text;
+        }
+    }
     static byte[] EncryptStringToBytes_Aes(string plainText, byte[] Key, byte[] IV)
         {
             // Check arguments.

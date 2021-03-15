@@ -22,3 +22,15 @@
 /home/ovidiu/Documents/Projects/WebPass/EDataAccessLibrary/obj/Debug/net5.0/EDataAccessLibrary.dll
 /home/ovidiu/Documents/Projects/WebPass/EDataAccessLibrary/obj/Debug/net5.0/ref/EDataAccessLibrary.dll
 /home/ovidiu/Documents/Projects/WebPass/EDataAccessLibrary/obj/Debug/net5.0/EDataAccessLibrary.pdb
+/home/ovidiu/Desktop/WebPass/EDataAccessLibrary/bin/Debug/net5.0/EDataAccessLibrary.deps.json
+/home/ovidiu/Desktop/WebPass/EDataAccessLibrary/bin/Debug/net5.0/EDataAccessLibrary.dll
+/home/ovidiu/Desktop/WebPass/EDataAccessLibrary/bin/Debug/net5.0/ref/EDataAccessLibrary.dll
+/home/ovidiu/Desktop/WebPass/EDataAccessLibrary/bin/Debug/net5.0/EDataAccessLibrary.pdb
+/home/ovidiu/Desktop/WebPass/EDataAccessLibrary/obj/Debug/net5.0/EDataAccessLibrary.csprojAssemblyReference.cache
+/home/ovidiu/Desktop/WebPass/EDataAccessLibrary/obj/Debug/net5.0/EDataAccessLibrary.GeneratedMSBuildEditorConfig.editorconfig
+/home/ovidiu/Desktop/WebPass/EDataAccessLibrary/obj/Debug/net5.0/EDataAccessLibrary.AssemblyInfoInputs.cache
+/home/ovidiu/Desktop/WebPass/EDataAccessLibrary/obj/Debug/net5.0/EDataAccessLibrary.AssemblyInfo.cs
+/home/ovidiu/Desktop/WebPass/EDataAccessLibrary/obj/Debug/net5.0/EDataAccessLibrary.csproj.CoreCompileInputs.cache
+/home/ovidiu/Desktop/WebPass/EDataAccessLibrary/obj/Debug/net5.0/EDataAccessLibrary.dll
+/home/ovidiu/Desktop/WebPass/EDataAccessLibrary/obj/Debug/net5.0/ref/EDataAccessLibrary.dll
+/home/ovidiu/Desktop/WebPass/EDataAccessLibrary/obj/Debug/net5.0/EDataAccessLibrary.pdb

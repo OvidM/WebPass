@@ -2,13 +2,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebPassManager.Models
 {
-    public class DisplayPasswordModel
+    public class DisplayRegisterUserModel
     {
         public int Id {get; set;}
-        [Required]
-        [MinLength(5, ErrorMessage = "Too short.")]
-        [DataType(DataType.Url)]
-        public string Service {get; set; }
         [Required]
         [MinLength(5, ErrorMessage = "Minimum 5 characters")]
         public string UserName {get; set; }
@@ -19,6 +15,5 @@ namespace WebPassManager.Models
         [Required]
         [Compare(nameof(PassWord), ErrorMessage = "Passwords must match")]
         public string RepeatPassWord {get; set;}
-        public int UserId {get; set;}
     }
 }

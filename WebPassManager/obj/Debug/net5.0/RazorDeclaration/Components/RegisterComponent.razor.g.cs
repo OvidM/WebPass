@@ -67,6 +67,13 @@ using Microsoft.JSInterop;
 #line hidden
 #nullable disable
 #nullable restore
+#line 9 "/home/ovidiu/Desktop/WebPass/WebPassManager/_Imports.razor"
+using WebPassManager;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 10 "/home/ovidiu/Desktop/WebPass/WebPassManager/_Imports.razor"
 using WebPassManager.Shared;
 
@@ -102,62 +109,48 @@ using System.Collections.Generic;
 #line hidden
 #nullable disable
 #nullable restore
-#line 1 "/home/ovidiu/Desktop/WebPass/WebPassManager/Components/TableComponent.razor"
-using EDataAccessLibrary.Models;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 2 "/home/ovidiu/Desktop/WebPass/WebPassManager/Components/TableComponent.razor"
-using Models;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 3 "/home/ovidiu/Desktop/WebPass/WebPassManager/Components/TableComponent.razor"
-using System;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 4 "/home/ovidiu/Desktop/WebPass/WebPassManager/Components/TableComponent.razor"
-using System.Security.Cryptography;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 5 "/home/ovidiu/Desktop/WebPass/WebPassManager/Components/TableComponent.razor"
-using System.IO;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 6 "/home/ovidiu/Desktop/WebPass/WebPassManager/Components/TableComponent.razor"
+#line 15 "/home/ovidiu/Desktop/WebPass/WebPassManager/_Imports.razor"
 using EDataAccessLibrary;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "/home/ovidiu/Desktop/WebPass/WebPassManager/Components/TableComponent.razor"
-using System.Threading;
+#line 16 "/home/ovidiu/Desktop/WebPass/WebPassManager/_Imports.razor"
+using EDataAccessLibrary.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "/home/ovidiu/Desktop/WebPass/WebPassManager/Components/TableComponent.razor"
-using WebPassManager;
+#line 17 "/home/ovidiu/Desktop/WebPass/WebPassManager/_Imports.razor"
+using Models;
 
 #line default
 #line hidden
 #nullable disable
-    public partial class TableComponent : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 18 "/home/ovidiu/Desktop/WebPass/WebPassManager/_Imports.razor"
+using System.Security.Cryptography;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 19 "/home/ovidiu/Desktop/WebPass/WebPassManager/_Imports.razor"
+using System.IO;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 20 "/home/ovidiu/Desktop/WebPass/WebPassManager/_Imports.razor"
+using System;
+
+#line default
+#line hidden
+#nullable disable
+    public partial class RegisterComponent : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -165,122 +158,17 @@ using WebPassManager;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 89 "/home/ovidiu/Desktop/WebPass/WebPassManager/Components/TableComponent.razor"
+#line 49 "/home/ovidiu/Desktop/WebPass/WebPassManager/Components/RegisterComponent.razor"
        
-    [CascadingParameter(Name="userName")]
-    string userName {get; set;}
-    [CascadingParameter(Name="userID")] 
-    int userID {get; set;}
-    [CascadingParameter(Name="passwords")]
-    public List<PasswordModel> passwords {get; set;}
-    public List<UserModel> users;
-    public DisplayPasswordModel newPassword = new DisplayPasswordModel();
-    public bool show = false;
-    public bool isGenerated ,isLoggedOut, confirmDelete = false;
-    public int idToDelete;
-    public string passw= "********";
-    bool isShow;
+    [CascadingParameter(Name = "users")]
+    public List<UserModel> users {get; set;}
+    public List<UserModel> _users;
+    public List<PasswordModel> _passwords;
+    public DisplayRegisterUserModel newUser = new DisplayRegisterUserModel();
+    bool isShow,isLoggedIn, toLogin,invalidInput, showForm = true;
+    bool userTaken = true;
     InputType PasswordInput = InputType.Password;
     string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
-    private async void changeVisibility()
-    {
-        show = !show;
-        if(show == false){
-            foreach(var item in passwords)
-            {
-                item.PassWord  = Convert.ToBase64String(EncryptStringToBytes_Aes(item.PassWord,
-                                                           Convert.FromBase64String(item.PassKey),
-                                                            Convert.FromBase64String(item.PassIV)));
-            }
-        }
-        else{
-            foreach(var item in passwords)
-            {
-                item.PassWord  = DecryptStringFromBytes_Aes(Convert.FromBase64String(item.PassWord),
-                                                           Convert.FromBase64String(item.PassKey),
-                                                            Convert.FromBase64String(item.PassIV));
-            }
-        }
-        await InvokeAsync(() =>
-        {
-            base.StateHasChanged();
-        });
-    }
-    async void logOut()
-    {
-        users = await _db1.GetUsers();
-        isLoggedOut = true;
-        await InvokeAsync(() =>
-        {
-            base.StateHasChanged();
-        });
-    }
-    async void refreshPage()
-    {
-        passwords = null;
-        await Task.Delay(500);
-        passwords = await _db2.GetPasswords(userID);
-        await InvokeAsync(() =>
-        {
-            base.StateHasChanged();
-        });
-    }
-    void generatePass()
-    {
-        
-        var ppass = Password.Generate(15, 1);
-        newPassword.PassWord = ppass;
-        newPassword.RepeatPassWord = ppass;
-        isGenerated = true;
-        if(isShow == false)
-        ButtonTestclick();
-    }
-    private async Task TransferPassword()
-    {
-        using(Aes myAes = Aes.Create())
-        {
-            byte[] newEncrypted = EncryptStringToBytes_Aes(newPassword.PassWord, myAes.Key, myAes.IV);
-            string newEncrypted1 = Convert.ToBase64String(newEncrypted);
-            var key = Convert.ToBase64String(myAes.Key);
-            var IV = Convert.ToBase64String(myAes.IV);
-            PasswordModel p = new PasswordModel
-            {
-                Service = newPassword.Service,
-                UserName = newPassword.UserName,
-                PassWord = newEncrypted1,
-                UserId = userID,
-                PassKey = key,
-                PassIV = IV
-            };
-            changeVisibility();
-            var id = await _db2.InsertPassword(p);
-            p.Id = (Int32)id;
-            passwords.Add(p);
-            changeVisibility();
-            newPassword = new DisplayPasswordModel();
-            await InvokeAsync(() =>
-            {
-                base.StateHasChanged();
-            });
-        }
-        
-    }
-    private void ConfirmPass(int ID)
-    {
-        idToDelete = ID;
-        confirmDelete = true;
-    }
-    private async void DeletePass(int ID)
-    {
-        System.Console.WriteLine("Passwords are: " + passwords.Count());
-        await _db2.DeletePassword(ID);
-        System.Console.WriteLine("Passwords are: " + passwords.Count());
-        passwords = passwords.Where(x=>x.Id!=ID).ToList();
-        await InvokeAsync(() =>
-        {
-            base.StateHasChanged();
-        });
-    }
     void ButtonTestclick()
     {
         if (isShow)
@@ -294,6 +182,71 @@ using WebPassManager;
             PasswordInputIcon = Icons.Material.Filled.Visibility;
             PasswordInput = InputType.Text;
         }
+    }
+    async void goLogin()
+    {
+        isLoggedIn = false;
+        toLogin = true;
+        showForm = false;
+        _users = await _db1.GetUsers();
+        await InvokeAsync(() =>
+        {
+            base.StateHasChanged();
+        }); 
+    }
+    private async void goBack()
+    {
+        invalidInput = false;
+        await InvokeAsync(() =>
+        {
+            base.StateHasChanged();
+        }); 
+    }
+    private async Task TransferUser()
+    {
+        invalidInput = false;
+        foreach(var user in users)
+        {
+            if(newUser.UserName == user.UserName)
+            {
+                invalidInput = true;
+            }
+        }
+        if(invalidInput == false)
+        {
+            using(Aes myAes = Aes.Create())
+            {
+                byte[] newEncrypted = EncryptStringToBytes_Aes(newUser.PassWord, myAes.Key, myAes.IV);
+                string newEncrypted1 = Convert.ToBase64String(newEncrypted);
+                var key = Convert.ToBase64String(myAes.Key);
+                var IV = Convert.ToBase64String(myAes.IV);
+                UserModel p = new UserModel
+                {
+                    UserName = newUser.UserName,
+                    PassWord = newEncrypted1,
+                    PassKey = key,
+                    PassIV = IV
+                };
+                var id = await _db1.InsertUser(p);
+                p.Id = (Int32)id;
+                users.Add(p);
+                isLoggedIn = true;
+                toLogin = false;
+                showForm = false;
+                _passwords = await _db2.GetPasswords(p.Id);
+                await InvokeAsync(() =>
+                {
+                    base.StateHasChanged();
+                });
+            } 
+        }else
+        {
+            await InvokeAsync(() =>
+                {
+                    base.StateHasChanged();
+                });
+        }
+        
     }
     static byte[] EncryptStringToBytes_Aes(string plainText, byte[] Key, byte[] IV)
         {
@@ -330,7 +283,6 @@ using WebPassManager;
                     }
                 }
             }
-
             // Return the encrypted bytes from the memory stream.
             return encrypted;
         }

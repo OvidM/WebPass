@@ -15,18 +15,18 @@ namespace EDataAccessLibrary
         {
             _db = db;
         }
-        public Task<List<PasswordModel>> GetPasswords()
+        public Task<List<PasswordModel>> GetPasswords(int ID)
         {
-            string sql = "select Id,Service, UserName, Password, UserId, PassKey, PassIV from dbo.Passwords";
+            string sql = "select Id,Service, UserName, Password, UserId, PassKey, PassIV from dbo.Passwords where UserId = @Id;";
 
-            return _db.LoadData<PasswordModel, dynamic>(sql, new { });
+            return _db.LoadData<PasswordModel, dynamic>(sql, new { Id = ID });
         }
 
-        public async Task<decimal> InsertPassword(PasswordModel password)
+        public Task<decimal> InsertPassword(PasswordModel password)
         {
             string sql = @"insert into dbo.Passwords (Service, UserName, Password, UserId, PassKey, PassIV)
-                           values (@Service, @UserName, @Password, @UserId, @PassKey, @PassIV)";
-            return await _db.SaveData(sql, password);
+                           values (@Service, @UserName, @Password, @UserId, @PassKey, @PassIV);select SCOPE_IDENTITY();";
+            return _db.SaveData(sql, password);
         }
         public Task UpdatePassword(PasswordModel password, int ID)
         {

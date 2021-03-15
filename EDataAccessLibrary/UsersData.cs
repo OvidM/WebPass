@@ -16,16 +16,16 @@ namespace EDataAccessLibrary
         }
         public Task<List<UserModel>> GetUsers()
         {
-            string sql = "select Id,UserName, Password from dbo.Users";
+            string sql = "select Id,UserName, Password,PassIV,PassKey  from dbo.Users";
 
             return _db.LoadData<UserModel, dynamic>(sql, new { });
         }
 
-        public Task InsertUser(UserModel user)
+        public async Task<decimal> InsertUser(UserModel user)
         {
-            string sql = @"insert into dbo.Users (UserName, Password)
-                           values (@UserName, @Password);";
-            return _db.SaveData(sql, user);
+            string sql = @"insert into dbo.Users (UserName, Password, PassIV, PassKey)
+                           values (@UserName, @Password, @PassIV, @PassKey);select SCOPE_IDENTITY()";
+            return await _db.SaveData(sql, user);
         }
     }
 }

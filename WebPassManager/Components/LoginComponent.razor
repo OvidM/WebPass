@@ -1,0 +1,174 @@
+
+@if(isLoggedIn)
+{
+    <CascadingValue Value = "verifyUser.UserName" Name = "userName">
+        <CascadingValue Value="_passwords" Name="passwords">
+            <CascadingValue Value = "verifyUser.Id" Name="userID">
+                <TableComponent />
+            </CascadingValue>
+        </CascadingValue>
+    </CascadingValue>
+}
+else if(toRegister)
+{
+    <CascadingValue Value="users" Name="users">
+        <RegisterComponent />
+    </CascadingValue>
+}
+else
+{
+    <div style="width: 550px; position: absolute;top 40%;left: 45%; padding: 40px;" class = "formModel">
+        <MudText Typo="Typo.h4" Style="color: white; margin-bottom: 7px" Align="Align.Center"><strong>Login</strong></MudText>
+        <EditForm Model="@verifyUser" OnValidSubmit="@VerifyUser" Align>
+            <DataAnnotationsValidator />
+            <MudCard>
+                <MudCardContent>
+                    <MudTextField Label="Username" Class="mt-3"
+                                @bind-Value="verifyUser.UserName" For="@(() => verifyUser.UserName)" />
+                    <MudTextField Label="Password" HelperText="Enter your password" Class="mt-3"
+                                @bind-Value="verifyUser.PassWord" For="@(() => verifyUser.PassWord)" InputType="@PasswordInput" Adornment="Adornment.End" AdornmentIcon="@PasswordInputIcon" OnAdornmentClick="ButtonTestclick"/>
+                </MudCardContent>
+                <MudButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Primary" @onclick = "Register">New User? Register Now!</MudButton>
+                <MudCardActions Align = "Align.Center">
+                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto" Align="Align.Center">Submit</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </EditForm>
+    </div>
+}
+
+
+
+@code {
+    [CascadingParameter(Name = "users")]
+    public List<UserModel> users {get; set;}
+
+    public List<PasswordModel> _passwords;
+    public DisplayUserModel verifyUser = new DisplayUserModel();
+    bool isShow,isLoggedIn,toRegister = false;
+    InputType PasswordInput = InputType.Password;
+    string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+    private async void VerifyUser(){
+        foreach(var user in users)
+        {
+            user.PassWord = DecryptStringFromBytes_Aes(Convert.FromBase64String(user.PassWord),
+                                                           Convert.FromBase64String(user.PassKey),
+                                                            Convert.FromBase64String(user.PassIV));
+            if(verifyUser.UserName == user.UserName && verifyUser.PassWord == user.PassWord)
+            {
+                verifyUser.Id = user.Id;
+                isLoggedIn = true;
+                _passwords = await _db2.GetPasswords(user.Id);
+                await InvokeAsync(() =>
+                {
+                    base.StateHasChanged();
+                });
+            }
+        }
+    }
+    void ButtonTestclick()
+    {
+        if (isShow)
+        {
+            isShow = false;
+            PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+            PasswordInput = InputType.Password;
+        }
+        else {
+            isShow = true;
+            PasswordInputIcon = Icons.Material.Filled.Visibility;
+            PasswordInput = InputType.Text;
+        }
+    }
+    async void Register()
+    {
+        isLoggedIn = false;
+        toRegister = true;
+        await InvokeAsync(() =>
+        {
+            base.StateHasChanged();
+        }); 
+    }
+    static byte[] EncryptStringToBytes_Aes(string plainText, byte[] Key, byte[] IV)
+        {
+            // Check arguments.
+            if (plainText == null || plainText.Length <= 0)
+                throw new ArgumentNullException("plainText");
+            if (Key == null || Key.Length <= 0)
+                throw new ArgumentNullException("Key");
+            if (IV == null || IV.Length <= 0)
+                throw new ArgumentNullException("IV");
+            byte[] encrypted;
+
+            // Create an Aes object
+            // with the specified key and IV.
+            using (Aes aesAlg = Aes.Create())
+            {
+                aesAlg.Key = Key;
+                aesAlg.IV = IV;
+
+                // Create an encryptor to perform the stream transform.
+                ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
+
+                // Create the streams used for encryption.
+                using (MemoryStream msEncrypt = new MemoryStream())
+                {
+                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                    {
+                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
+                        {
+                            //Write all data to the stream.
+                            swEncrypt.Write(plainText);
+                        }
+                        encrypted = msEncrypt.ToArray();
+                    }
+                }
+            }
+            // Return the encrypted bytes from the memory stream.
+            return encrypted;
+        }
+    static string DecryptStringFromBytes_Aes(byte[] cipherText, byte[] Key, byte[] IV)
+        {
+            // Check arguments.
+            if (cipherText == null || cipherText.Length <= 0)
+                throw new ArgumentNullException("cipherText");
+            if (Key == null || Key.Length <= 0)
+                throw new ArgumentNullException("Key");
+            if (IV == null || IV.Length <= 0)
+                throw new ArgumentNullException("IV");
+
+            // Declare the string used to hold
+            // the decrypted text.
+            string plaintext = null;
+
+            // Create an Aes object
+            // with the specified key and IV.
+            using (Aes aesAlg = Aes.Create())
+            {   
+                Console.WriteLine("key:" + Key.Length);
+                Console.WriteLine("IV:" + IV.Length);
+                aesAlg.Key = Key;
+                aesAlg.IV = IV;
+
+                // Create a decryptor to perform the stream transform.
+                ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
+
+                // Create the streams used for decryption.
+                using (MemoryStream msDecrypt = new MemoryStream(cipherText))
+                {
+                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                    {
+                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                        {
+
+                            // Read the decrypted bytes from the decrypting stream
+                            // and place them in a string.
+                            plaintext = srDecrypt.ReadToEnd();
+                        }
+                    }
+                }
+            }
+
+            return plaintext;
+        }
+}
