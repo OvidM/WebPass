@@ -12,35 +12,35 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
-        "HashCode": -686287927,
+        "HashCode": -300484145,
         "Kind": "Components.Component",
-        "Name": "WebPassManager.Components.RegisterComponent",
+        "Name": "WebPassManager.Components.LoginComponent",
         "AssemblyName": "WebPassManager",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "RegisterComponent"
+            "TagName": "LoginComponent"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "WebPassManager.Components.RegisterComponent"
+          "Common.TypeName": "WebPassManager.Components.LoginComponent"
         }
       },
       {
-        "HashCode": -266484440,
+        "HashCode": 1200207829,
         "Kind": "Components.Component",
-        "Name": "WebPassManager.Components.RegisterComponent",
+        "Name": "WebPassManager.Components.LoginComponent",
         "AssemblyName": "WebPassManager",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "WebPassManager.Components.RegisterComponent"
+            "TagName": "WebPassManager.Components.LoginComponent"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "WebPassManager.Components.RegisterComponent",
+          "Common.TypeName": "WebPassManager.Components.LoginComponent",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -78,35 +78,35 @@
         }
       },
       {
-        "HashCode": -300484145,
+        "HashCode": -686287927,
         "Kind": "Components.Component",
-        "Name": "WebPassManager.Components.LoginComponent",
+        "Name": "WebPassManager.Components.RegisterComponent",
         "AssemblyName": "WebPassManager",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "LoginComponent"
+            "TagName": "RegisterComponent"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "WebPassManager.Components.LoginComponent"
+          "Common.TypeName": "WebPassManager.Components.RegisterComponent"
         }
       },
       {
-        "HashCode": 1200207829,
+        "HashCode": -266484440,
         "Kind": "Components.Component",
-        "Name": "WebPassManager.Components.LoginComponent",
+        "Name": "WebPassManager.Components.RegisterComponent",
         "AssemblyName": "WebPassManager",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "WebPassManager.Components.LoginComponent"
+            "TagName": "WebPassManager.Components.RegisterComponent"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "WebPassManager.Components.LoginComponent",
+          "Common.TypeName": "WebPassManager.Components.RegisterComponent",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
