@@ -6,6 +6,7 @@
 @using EDataAccessLibrary
 @using System.Threading
 @using WebPassManager
+@using MudBlazor
 @inject IUsersData _db1
 @inject IPasswordData _db2
 
@@ -140,6 +141,16 @@ else
         passwords = null;
         await Task.Delay(500);
         passwords = await _db2.GetPasswords(userID);
+        if(show)
+        {
+            changeVisibility();
+            foreach(var item in passwords)
+            {
+                item.PassWord  = DecryptStringFromBytes_Aes(Convert.FromBase64String(item.PassWord),
+                                                           Convert.FromBase64String(item.PassKey),
+                                                            Convert.FromBase64String(item.PassIV));
+            }
+        }
         await InvokeAsync(() =>
         {
             base.StateHasChanged();
@@ -172,11 +183,15 @@ else
                 PassKey = key,
                 PassIV = IV
             };
-            changeVisibility();
             var id = await _db2.InsertPassword(p);
             p.Id = (Int32)id;
+            if(show){
+                p.PassWord = DecryptStringFromBytes_Aes(Convert.FromBase64String(p.PassWord),
+                                                           Convert.FromBase64String(p.PassKey),
+                                                            Convert.FromBase64String(p.PassIV));
+            }
+            
             passwords.Add(p);
-            changeVisibility();
             newPassword = new DisplayPasswordModel();
             await InvokeAsync(() =>
             {

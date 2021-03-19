@@ -11,148 +11,148 @@ namespace WebPassManager.Components
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "/home/ovidiu/Desktop/WebPass/WebPassManager/_Imports.razor"
+#line 1 "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "/home/ovidiu/Desktop/WebPass/WebPassManager/_Imports.razor"
+#line 2 "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "/home/ovidiu/Desktop/WebPass/WebPassManager/_Imports.razor"
+#line 3 "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "/home/ovidiu/Desktop/WebPass/WebPassManager/_Imports.razor"
+#line 4 "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "/home/ovidiu/Desktop/WebPass/WebPassManager/_Imports.razor"
+#line 5 "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "/home/ovidiu/Desktop/WebPass/WebPassManager/_Imports.razor"
+#line 6 "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "/home/ovidiu/Desktop/WebPass/WebPassManager/_Imports.razor"
+#line 7 "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "/home/ovidiu/Desktop/WebPass/WebPassManager/_Imports.razor"
+#line 8 "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "/home/ovidiu/Desktop/WebPass/WebPassManager/_Imports.razor"
+#line 10 "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/_Imports.razor"
 using WebPassManager.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "/home/ovidiu/Desktop/WebPass/WebPassManager/_Imports.razor"
-using MudBlazor;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 12 "/home/ovidiu/Desktop/WebPass/WebPassManager/_Imports.razor"
+#line 12 "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/_Imports.razor"
 using Data;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 13 "/home/ovidiu/Desktop/WebPass/WebPassManager/_Imports.razor"
+#line 13 "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/_Imports.razor"
 using WebPassManager.Components;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 14 "/home/ovidiu/Desktop/WebPass/WebPassManager/_Imports.razor"
+#line 14 "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/_Imports.razor"
 using System.Collections.Generic;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 1 "/home/ovidiu/Desktop/WebPass/WebPassManager/Components/TableComponent.razor"
+#line 1 "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/Components/TableComponent.razor"
 using EDataAccessLibrary.Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "/home/ovidiu/Desktop/WebPass/WebPassManager/Components/TableComponent.razor"
+#line 2 "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/Components/TableComponent.razor"
 using Models;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "/home/ovidiu/Desktop/WebPass/WebPassManager/Components/TableComponent.razor"
+#line 3 "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/Components/TableComponent.razor"
 using System;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "/home/ovidiu/Desktop/WebPass/WebPassManager/Components/TableComponent.razor"
+#line 4 "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/Components/TableComponent.razor"
 using System.Security.Cryptography;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "/home/ovidiu/Desktop/WebPass/WebPassManager/Components/TableComponent.razor"
+#line 5 "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/Components/TableComponent.razor"
 using System.IO;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "/home/ovidiu/Desktop/WebPass/WebPassManager/Components/TableComponent.razor"
+#line 6 "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/Components/TableComponent.razor"
 using EDataAccessLibrary;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "/home/ovidiu/Desktop/WebPass/WebPassManager/Components/TableComponent.razor"
+#line 7 "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/Components/TableComponent.razor"
 using System.Threading;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "/home/ovidiu/Desktop/WebPass/WebPassManager/Components/TableComponent.razor"
+#line 8 "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/Components/TableComponent.razor"
 using WebPassManager;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 9 "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/Components/TableComponent.razor"
+using MudBlazor;
 
 #line default
 #line hidden
@@ -165,7 +165,7 @@ using WebPassManager;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 89 "/home/ovidiu/Desktop/WebPass/WebPassManager/Components/TableComponent.razor"
+#line 90 "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/Components/TableComponent.razor"
        
     [CascadingParameter(Name="userName")]
     string userName {get; set;}
@@ -220,6 +220,16 @@ using WebPassManager;
         passwords = null;
         await Task.Delay(500);
         passwords = await _db2.GetPasswords(userID);
+        if(show)
+        {
+            changeVisibility();
+            foreach(var item in passwords)
+            {
+                item.PassWord  = DecryptStringFromBytes_Aes(Convert.FromBase64String(item.PassWord),
+                                                           Convert.FromBase64String(item.PassKey),
+                                                            Convert.FromBase64String(item.PassIV));
+            }
+        }
         await InvokeAsync(() =>
         {
             base.StateHasChanged();
@@ -252,11 +262,15 @@ using WebPassManager;
                 PassKey = key,
                 PassIV = IV
             };
-            changeVisibility();
             var id = await _db2.InsertPassword(p);
             p.Id = (Int32)id;
+            if(show){
+                p.PassWord = DecryptStringFromBytes_Aes(Convert.FromBase64String(p.PassWord),
+                                                           Convert.FromBase64String(p.PassKey),
+                                                            Convert.FromBase64String(p.PassIV));
+            }
+            
             passwords.Add(p);
-            changeVisibility();
             newPassword = new DisplayPasswordModel();
             await InvokeAsync(() =>
             {

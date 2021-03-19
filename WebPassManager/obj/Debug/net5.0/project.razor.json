@@ -1,5 +1,5 @@
 {
-  "FilePath": "/home/ovidiu/Desktop/WebPass/WebPassManager/WebPassManager.csproj",
+  "FilePath": "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/WebPassManager.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "5.0",
@@ -45,39 +45,6 @@
         }
       },
       {
-        "HashCode": 439158736,
-        "Kind": "Components.Component",
-        "Name": "WebPassManager.Components.TableComponent",
-        "AssemblyName": "WebPassManager",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "TableComponent"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "WebPassManager.Components.TableComponent"
-        }
-      },
-      {
-        "HashCode": -610114415,
-        "Kind": "Components.Component",
-        "Name": "WebPassManager.Components.TableComponent",
-        "AssemblyName": "WebPassManager",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "WebPassManager.Components.TableComponent"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "WebPassManager.Components.TableComponent",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": -686287927,
         "Kind": "Components.Component",
         "Name": "WebPassManager.Components.RegisterComponent",
@@ -107,6 +74,39 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "WebPassManager.Components.RegisterComponent",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 439158736,
+        "Kind": "Components.Component",
+        "Name": "WebPassManager.Components.TableComponent",
+        "AssemblyName": "WebPassManager",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TableComponent"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "WebPassManager.Components.TableComponent"
+        }
+      },
+      {
+        "HashCode": -610114415,
+        "Kind": "Components.Component",
+        "Name": "WebPassManager.Components.TableComponent",
+        "AssemblyName": "WebPassManager",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "WebPassManager.Components.TableComponent"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "WebPassManager.Components.TableComponent",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -59749,59 +59749,59 @@
   "RootNamespace": "WebPassManager",
   "Documents": [
     {
-      "FilePath": "/home/ovidiu/Desktop/WebPass/WebPassManager/Pages/Index.razor",
-      "TargetPath": "Pages\\Index.razor",
-      "FileKind": "component"
-    },
-    {
-      "FilePath": "/home/ovidiu/Desktop/WebPass/WebPassManager/Pages/Error.cshtml",
-      "TargetPath": "Pages\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/ovidiu/Desktop/WebPass/WebPassManager/App.razor",
-      "TargetPath": "App.razor",
-      "FileKind": "component"
-    },
-    {
-      "FilePath": "/home/ovidiu/Desktop/WebPass/WebPassManager/Shared/MainLayout.razor",
-      "TargetPath": "Shared\\MainLayout.razor",
-      "FileKind": "component"
-    },
-    {
-      "FilePath": "/home/ovidiu/Desktop/WebPass/WebPassManager/Shared/NavMenu.razor",
-      "TargetPath": "Shared\\NavMenu.razor",
-      "FileKind": "component"
-    },
-    {
-      "FilePath": "/home/ovidiu/Desktop/WebPass/WebPassManager/Components/RegisterComponent.razor",
-      "TargetPath": "Components\\RegisterComponent.razor",
-      "FileKind": "component"
-    },
-    {
-      "FilePath": "/home/ovidiu/Desktop/WebPass/WebPassManager/Components/TableComponent.razor",
-      "TargetPath": "Components\\TableComponent.razor",
-      "FileKind": "component"
-    },
-    {
-      "FilePath": "/home/ovidiu/Desktop/WebPass/WebPassManager/_Imports.razor",
+      "FilePath": "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/_Imports.razor",
       "TargetPath": "_Imports.razor",
       "FileKind": "componentImport"
     },
     {
-      "FilePath": "/home/ovidiu/Desktop/WebPass/WebPassManager/Pages/FetchData.razor",
+      "FilePath": "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/Pages/Index.razor",
+      "TargetPath": "Pages\\Index.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/Pages/Error.cshtml",
+      "TargetPath": "Pages\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/App.razor",
+      "TargetPath": "App.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/Components/RegisterComponent.razor",
+      "TargetPath": "Components\\RegisterComponent.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/Pages/FetchData.razor",
       "TargetPath": "Pages\\FetchData.razor",
       "FileKind": "component"
     },
     {
-      "FilePath": "/home/ovidiu/Desktop/WebPass/WebPassManager/Components/LoginComponent.razor",
+      "FilePath": "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/Components/TableComponent.razor",
+      "TargetPath": "Components\\TableComponent.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/Pages/_Host.cshtml",
+      "TargetPath": "Pages\\_Host.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/Components/LoginComponent.razor",
       "TargetPath": "Components\\LoginComponent.razor",
       "FileKind": "component"
     },
     {
-      "FilePath": "/home/ovidiu/Desktop/WebPass/WebPassManager/Pages/_Host.cshtml",
-      "TargetPath": "Pages\\_Host.cshtml",
-      "FileKind": "mvc"
+      "FilePath": "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/Shared/MainLayout.razor",
+      "TargetPath": "Shared\\MainLayout.razor",
+      "FileKind": "component"
+    },
+    {
+      "FilePath": "/home/ovidiu/Documents/Anul 2/Sem4/BSI/Lab2/WebPass/WebPassManager/Shared/NavMenu.razor",
+      "TargetPath": "Shared\\NavMenu.razor",
+      "FileKind": "component"
     }
   ],
   "SerializationFormat": "0.2"
